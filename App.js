@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import OnBoardScreen from './src/views/OnBoardScreen'
+import DetailsScreen from './src/views/DetailsScreen'
+import HomeScreen from './src/views/HomeScreen'
+import Medicine from './src/views/Medicine'
+import Profile from './src/views/ProFile'
+import GoogleMap from './src/views/GoogleMap'
+const Stack = createStackNavigator();
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const App = () =>{
+  return(
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name = "OnboardScreen" component={OnBoardScreen}/>
+        <Stack.Screen name = "DetailsScreen" component={DetailsScreen}/>
+        <Stack.Screen name = "HomeScreen" component={HomeScreen}/>
+        <Stack.Screen name = "Medicine" component={Medicine}/>
+        <Stack.Screen name = "Profile" component={Profile}/>
+        <Stack.Screen name = "GoogleMap" component={GoogleMap}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
